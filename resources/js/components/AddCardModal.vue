@@ -67,5 +67,3 @@ async function onSubmit(values, v$) {
         </div>
     </Modal>
 </template>
-
-<style scoped></style>

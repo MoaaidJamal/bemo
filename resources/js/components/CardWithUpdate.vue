@@ -89,6 +89,3 @@ async function deleteRestoreCard(id, column_id, status) {
         </div>
     </Modal>
 </template>
-
-
-<style scoped></style>

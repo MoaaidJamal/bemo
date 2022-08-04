@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         Column::factory(3)->create();
-         Card::factory(15)->create();
+         Column::factory(5)->create();
+         Card::factory(20)->create();
     }
 }

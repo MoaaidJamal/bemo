@@ -34,6 +34,12 @@ const exportSql = async () => {
     await axios.get(window.laravel.api_url + '/export-sql?access_token=' + window.laravel.access_token).then(response => {
         if (response.data.file_url) {
             downloadItem(window.laravel.url + response.data.file_url + '?access_token=' + window.laravel.access_token, 'dump.sql');
+        } else {
+            Swal.fire({
+                title: 'Can\'t export the database',
+                text: "",
+                icon: 'error',
+            })
         }
     });
 };
@@ -97,4 +103,3 @@ const columns = computed(() => {
         </div>
     </div>
 </template>
-<style scoped></style>
