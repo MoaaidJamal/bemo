@@ -62,8 +62,9 @@ class ColumnController extends Controller
     {
 //        try {
             MySql::create()
-                ->setDbName('bemo')
-                ->setUserName('root')
+                ->setDbName(config('database.connections.mysql.database'))
+                ->setUserName(config('database.connections.mysql.username'))
+                ->setPassword(config('database.connections.mysql.password'))
                 ->dumpToFile(storage_path('app/public/dump.sql'));
 //        } catch (Exception $e) {
 //            return response()->json([
