@@ -60,16 +60,16 @@ class ColumnController extends Controller
 
     public function exportSql()
     {
-        try {
+//        try {
             MySql::create()
                 ->setDbName('bemo')
                 ->setUserName('root')
                 ->dumpToFile(storage_path('app/public/dump.sql'));
-        } catch (Exception $e) {
-            return response()->json([
-                'error' => 'Can\'t export database'
-            ]);
-        }
+//        } catch (Exception $e) {
+//            return response()->json([
+//                'error' => 'Can\'t export database'
+//            ]);
+//        }
         return response()->json([
             'file_url' => Storage::url('dump.sql')
         ]);
