@@ -55,9 +55,13 @@ class Column extends Model
 
     public static function getColumnsWithCards($request)
     {
-        return self::query()->withWhereHas('cards', function ($q) use ($request) {
+        return self::query()->when($request->status == '0', function ($q) {
+            $q->whereHas('cards', function ($q) {
+                $q->onlyTrashed();
+            });
+        })->with(['cards' => function ($q) use ($request) {
             $q->filterStatus($request->status);
-        })->when($request->date('date'), function ($q) use ($request) {
+        }])->when($request->date('date'), function ($q) use ($request) {
             $q->whereBetween('created_at', [Carbon::parse($request->date('date'))->startOfDay(), Carbon::parse($request->date('date'))->endOfDay()]);
         })->get()->keyBy('id');
     }

@@ -38,26 +38,31 @@ async function onSubmit(values, v$) {
 </script>
 
 <template>
-    <button class="btn btn-secondary" @click="showModal()">Add</button>
+    <button class="btn btn--success btn--block mt-1" @click="showModal()">
+        <font-awesome-icon icon="plus" /> Add Card
+    </button>
     <Modal v-model="isShow" :close="closeModal">
         <div class="modal">
+            <h3>Add Card</h3>
             <form @submit.prevent="onSubmit(state, v$)">
-                <div :class="{ error: v$.title.$errors.length }">
+                <div class="input-group" :class="{ error: v$.title.$errors.length }">
+                    <label>Title</label>
                     <input v-model="state.title">
                     <div class="input-errors" v-for="error of v$.title.$errors" :key="error.$uid">
                         <div class="error-msg">{{ error.$message }}</div>
                     </div>
                 </div>
                 <br>
-                <div :class="{ error: v$.description.$errors.length }">
-                    <textarea v-model="state.description"></textarea>
+                <div class="input-group" :class="{ error: v$.description.$errors.length }">
+                    <label>Description</label>
+                    <textarea rows="6" v-model="state.description"></textarea>
                     <div class="input-errors" v-for="error of v$.description.$errors" :key="error.$uid">
                         <div class="error-msg">{{ error.$message }}</div>
                     </div>
                 </div>
                 <br>
-                <button>Submit</button>
-                <button type="button" @click="closeModal">Close</button>
+                <button class="btn mx-5px btn--success">Submit</button>
+                <button class="btn mx-5px" type="button" @click="closeModal">Close</button>
             </form>
         </div>
     </Modal>

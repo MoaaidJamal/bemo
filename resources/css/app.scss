@@ -1,8 +1,3 @@
-.vue-universal-modal {
-    /* Change dimmed color */
-    background-color: rgba(255, 255, 0, 0.3);
-}
-.vue-universal-modal-content {
-    /* Align to top (flex-direction property value is set to column) */
-    justify-content: flex-start;
-}
+@import "variables";
+@import "general";
+@import "columns";

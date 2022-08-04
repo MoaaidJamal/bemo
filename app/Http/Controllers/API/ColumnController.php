@@ -36,7 +36,7 @@ class ColumnController extends Controller
         foreach ($request['columns'] as $column) {
             $order = 1;
             foreach ($column['cards'] as $card) {
-                $card_db = Card::query()->find($card['id']);
+                $card_db = Card::query()->withTrashed()->find($card['id']);
                 if ($card_db) {
                     $card_db->update([
                         'column_id' => $column['id'],
